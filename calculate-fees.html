@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Fees - Empowering the Nation</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                      <a href="calculate-fees.html">
+                <img src="images/entlogo.jpg" alt="Empowering the Nation Logo">
+            </a>
+        </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="six-month-courses.html"><i class="fas fa-graduation-cap"></i> Six-Month Courses</a></li>
+                    <li><a href="six-week-courses.html"><i class="fas fa-book"></i> Six-Week Courses</a></li>
+                    <li><a href="calculate-fees.html" class="active"><i class="fas fa-calculator"></i> Calculate Fees</a></li>
+                    <li><a href="contact.html"><i class="fas fa-address-book"></i> Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="calculator-section">
+            <div class="container">
+                <h2>Calculate Total Fees</h2>
+                <p class="section-intro">Select the courses you're interested in and we'll calculate the total fees including any applicable discounts and VAT.</p>
+                
+                <div class="calculator-container">
+                    <div class="form-section">
+                        <h3>Contact Information</h3>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                                <span class="error-message" id="name-error"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                                <span class="error-message" id="phone-error"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                                <span class="error-message" id="email-error"></span>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="courses-section">
+                        <h3>Select Courses</h3>
+                        <div class="course-selection">
+                            <h4>Six-Month Courses (R1500 each)</h4>
+                            <div class="checkbox-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="course" value="first-aid" data-fee="1500">
+                                    <span class="checkmark"></span>
+                                    First Aid - R1500
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="course" value="sewing" data-fee="1500">
+                                    <span class="checkmark"></span>
+                                    Sewing - R1500
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="course" value="landscaping" data-fee="1500">
+                                    <span class="checkmark"></span>
+                                    Landscaping - R1500
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="course" value="life-skills" data-fee="1500">
+                                    <span class="checkmark"></span>
+                                    Life Skills - R1500
+                                </label>
+                            </div>
+                            
+                            <h4>Six-Week Courses (R750 each)</h4>
+                            <div class="checkbox-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="course" value="child-minding" data-fee="750">
+                                    <span class="checkmark"></span>
+                                    Child Minding - R750
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="course" value="cooking" data-fee="750">
+                                    <span class="checkmark"></span>
+                                    Cooking - R750
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="course" value="garden-maintenance" data-fee="750">
+                                    <span class="checkmark"></span>
+                                    Garden Maintenance - R750
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="calculation-results">
+                            <button id="calculate-btn" class="btn btn-primary">Calculate Total Fees</button>
+                            
+                            <div id="fee-breakdown" class="hidden">
+                                <h4>Fee Breakdown</h4>
+                                <div class="breakdown-item">
+                                    <span>Subtotal:</span>
+                                    <span id="subtotal">R0.00</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span>Discount:</span>
+                                    <span id="discount">R0.00 (0%)</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span>VAT (15%):</span>
+                                    <span id="vat">R0.00</span>
+                                </div>
+                                <div class="breakdown-item total">
+                                    <span>Total Fee:</span>
+                                    <span id="total">R0.00</span>
+                                </div>
+                                <p class="disclaimer">This is a quoted fee and not a formal invoice. A consultant will contact you to finalize your booking.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Empowering the Nation</h3>
+                    <p>Providing skills training for domestic workers and gardeners to enhance employability and enable entrepreneurship.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="six-month-courses.html">Six-Month Courses</a></li>
+                        <li><a href="six-week-courses.html">Six-Week Courses</a></li>
+                        <li><a href="calculate-fees.html">Calculate Fees</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> +27 11 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@empoweringthenation.co.za</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Empowering the Nation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

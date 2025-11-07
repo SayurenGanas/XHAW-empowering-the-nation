@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Empowering the Nation</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                      <a href="contact.html">
+                <img src="images/entlogo.jpg" alt="Empowering the Nation Logo">
+            </a>
+        </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="six-month-courses.html"><i class="fas fa-graduation-cap"></i> Six-Month Courses</a></li>
+                    <li><a href="six-week-courses.html"><i class="fas fa-book"></i> Six-Week Courses</a></li>
+                    <li><a href="calculate-fees.html"><i class="fas fa-calculator"></i> Calculate Fees</a></li>
+                    <li><a href="contact.html" class="active"><i class="fas fa-address-book"></i> Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p class="section-intro">Get in touch with us for more information about our courses or to enroll.</p>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+27 11 123 4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@empoweringthenation.co.za</p>
+                            </div>
+                        </div>
+                        
+                        <h3>Our Venues</h3>
+                        <div class="venue" data-venue="johannesburg-central">
+                            <h4>Johannesburg Central</h4>
+                            <p><i class="fas fa-map-marker-alt"></i> 123 Education Street, Braamfontein, Johannesburg</p>
+                            <button class="btn-map-view" data-lat="-26.195246" data-lng="28.034088">View on Map</button>
+                        </div>
+                        <div class="venue" data-venue="soweto-campus">
+                            <h4>Soweto Campus</h4>
+                            <p><i class="fas fa-map-marker-alt"></i> 456 Empowerment Avenue, Orlando West, Soweto</p>
+                            <button class="btn-map-view" data-lat="-26.248539" data-lng="27.854032">View on Map</button>
+                        </div>
+                        <div class="venue" data-venue="sandton-branch">
+                            <h4>Sandton Branch</h4>
+                            <p><i class="fas fa-map-marker-alt"></i> 789 Knowledge Road, Bryanston, Sandton</p>
+                            <button class="btn-map-view" data-lat="-26.107566" data-lng="28.056701">View on Map</button>
+                        </div>
+                    </div>
+                    
+                    <div class="map-container">
+                        <h3>Find Our Locations</h3>
+                        <div class="map-controls">
+                            <button class="map-control-btn active" data-center="-26.2041" data-zoom="11" data-venue="all">All Locations</button>
+                            <button class="map-control-btn" data-lat="-26.195246" data-lng="28.034088" data-venue="johannesburg-central">Johannesburg Central</button>
+                            <button class="map-control-btn" data-lat="-26.248539" data-lng="27.854032" data-venue="soweto-campus">Soweto Campus</button>
+                            <button class="map-control-btn" data-lat="-26.107566" data-lng="28.056701" data-venue="sandton-branch">Sandton Branch</button>
+                        </div>
+                        <div id="map"></div>
+                        <div class="map-legend">
+                            <div class="legend-item">
+                                <span class="legend-color" style="background-color: #1a4b8c;"></span>
+                                <span>Johannesburg Central</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background-color: #f9c74f;"></span>
+                                <span>Soweto Campus</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background-color: #2c6cb0;"></span>
+                                <span>Sandton Branch</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Empowering the Nation</h3>
+                    <p>Providing skills training for domestic workers and gardeners to enhance employability and enable entrepreneurship.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="six-month-courses.html">Six-Month Courses</a></li>
+                        <li><a href="six-week-courses.html">Six-Week Courses</a></li>
+                        <li><a href="calculate-fees.html">Calculate Fees</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> +27 11 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@empoweringthenation.co.za</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Empowering the Nation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/map.js"></script>
+</body>
+</html>
