@@ -339,3 +339,231 @@ window.addEventListener('resize', function() {
         }, 100);
     }
 });
+
+// About Page Interactive Features
+
+// Animated Statistics Counter
+function animateStatistics() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const statNumber = entry.target;
+                const target = parseInt(statNumber.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds
+                const step = target / (duration / 16); // 60fps
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    statNumber.textContent = Math.floor(current) + (statNumber.getAttribute('data-target') === '85' ? '%' : '');
+                }, 16);
+                
+                observer.unobserve(statNumber);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    statNumbers.forEach(stat => {
+        observer.observe(stat);
+    });
+}
+
+// Testimonial Slider
+class TestimonialSlider {
+    constructor() {
+        this.testimonials = document.querySelectorAll('.testimonial');
+        this.dots = document.querySelectorAll('.dot');
+        this.prevBtn = document.querySelector('.testimonial-prev');
+        this.nextBtn = document.querySelector('.testimonial-next');
+        this.currentSlide = 0;
+        this.autoSlideInterval = null;
+        
+        this.init();
+    }
+    
+    init() {
+        // Event listeners
+        this.prevBtn.addEventListener('click', () => this.prevSlide());
+        this.nextBtn.addEventListener('click', () => this.nextSlide());
+        
+        // Dot navigation
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => this.goToSlide(index));
+        });
+        
+        // Auto slide
+        this.startAutoSlide();
+        
+        // Pause auto slide on hover
+        const slider = document.querySelector('.testimonial-slider');
+        slider.addEventListener('mouseenter', () => this.stopAutoSlide());
+        slider.addEventListener('mouseleave', () => this.startAutoSlide());
+    }
+    
+    showSlide(index) {
+        // Hide all testimonials
+        this.testimonials.forEach(testimonial => {
+            testimonial.classList.remove('active');
+        });
+        
+        // Remove active class from all dots
+        this.dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        // Show current slide
+        this.testimonials[index].classList.add('active');
+        this.dots[index].classList.add('active');
+        this.currentSlide = index;
+    }
+    
+    nextSlide() {
+        let nextIndex = this.currentSlide + 1;
+        if (nextIndex >= this.testimonials.length) {
+            nextIndex = 0;
+        }
+        this.showSlide(nextIndex);
+    }
+    
+    prevSlide() {
+        let prevIndex = this.currentSlide - 1;
+        if (prevIndex < 0) {
+            prevIndex = this.testimonials.length - 1;
+        }
+        this.showSlide(prevIndex);
+    }
+    
+    goToSlide(index) {
+        this.showSlide(index);
+    }
+    
+    startAutoSlide() {
+        this.autoSlideInterval = setInterval(() => {
+            this.nextSlide();
+        }, 5000); // Change slide every 5 seconds
+    }
+    
+    stopAutoSlide() {
+        if (this.autoSlideInterval) {
+            clearInterval(this.autoSlideInterval);
+            this.autoSlideInterval = null;
+        }
+    }
+}
+
+// Smooth scrolling for navigation
+function initSmoothScrolling() {
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const offsetTop = targetElement.offsetTop - 80; // Adjust for header height
+                
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// Parallax effect for hero section
+function initParallax() {
+    const hero = document.querySelector('.about-hero');
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        hero.style.transform = `translateY(${rate}px)`;
+    });
+}
+
+// Initialize all features when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize statistics animation
+    animateStatistics();
+    
+    // Initialize testimonial slider
+    new TestimonialSlider();
+    
+    // Initialize smooth scrolling
+    initSmoothScrolling();
+    
+    // Initialize parallax effect
+    initParallax();
+    
+    // Add loading animation to mission cards
+    const missionCards = document.querySelectorAll('.mission-card');
+    missionCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+        card.classList.add('fade-in-up');
+    });
+});
+
+// Add CSS for fade-in-up animation
+const style = document.createElement('style');
+style.textContent = `
+    .fade-in-up {
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Additional hover effects */
+    .mission-card:hover .card-icon {
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+    }
+    
+    .feature-item:hover .feature-icon {
+        transform: rotate(10deg) scale(1.1);
+        transition: transform 0.3s ease;
+    }
+`;
+document.head.appendChild(style);
+
+// Handle responsive navigation for about page
+function initResponsiveNav() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+    }
+}
+
+// Call responsive nav initialization
+initResponsiveNav();
